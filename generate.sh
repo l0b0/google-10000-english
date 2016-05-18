@@ -2,4 +2,4 @@
 
 set -o errexit -o nounset
 
-shuf words.txt | head --lines=4
+printf '%s\n' "$(shuf words.txt | head --lines=4 | tr '\n' ' ')"
