@@ -1,31 +1,16 @@
-About This Repo
-===============
+XKCD passphrase generator
+===
 
-This repo contains a list of the 10,000 most common English words in order of frequency, as determined by [n-gram](http://en.wikipedia.org/wiki/N-gram) [frequency analysis](http://en.wikipedia.org/wiki/Frequency_analysis) of the [Google's Trillion Word Corpus](http://books.google.com/ngrams/info).
+Simply run **`./generate.sh`** to generate a passphrase based on the XKCD method: [![Password Strength comic by Randall Munroe](https://imgs.xkcd.com/comics/password_strength.png)](https://xkcd.com/936/)
 
-According to the [Google Machine Translation Team](http://googleresearch.blogspot.com/2006/08/all-our-n-gram-are-belong-to-you.html):
+The word list is based on [another repository](https://github.com/first20hours/google-10000-english). Many thanks to Josh Kaufman, Peter Norvig and Google for contributing this.
 
->Here at Google Research we have been using word n-gram models for a variety of R&D projects, such as statistical machine translation, speech recognition, spelling correction, entity detection, information extraction, and others. While such models have usually been estimated from training corpora containing at most a few billion words, we have been harnessing the vast power of Google's datacenters and distributed processing infrastructure to process larger and larger training corpora. We found that there's no data like more data, and scaled up the size of our data by one order of magnitude, and then another, and then one more - resulting in a training corpus of one trillion words from public Web pages.
->
->We believe that the entire research community can benefit from access to such massive amounts of data. It will advance the state of the art, it will focus research in the promising direction of large-scale, data-driven approaches, and it will allow all research groups, no matter how large or small their computing resources, to play together. That's why we decided to share this enormous dataset with everyone. We processed 1,024,908,267,229 words of running text and are publishing the counts for all 1,176,470,663 five-word sequences that appear at least 40 times. There are 13,588,391 unique words, after discarding words that appear less than 200 times.
+Notes:
 
-This repo is derived from [Peter Novig's](http://norvig.com/ngrams/) compilation of the [1/3 million most frequent English words](http://norvig.com/ngrams/count_1w.txt). I limited this file to the 10,000 most common words, then removed the appended frequency counts by running this sed command in my text editor: 
+- The original comic quoted “~44 bits of entropy” for a four word passphrase like “correct horse battery staple”, making it simple to assume that the dictionary contained 2048 words (2^(44/4)). The dictionary used is unknown, but even though the first three words are all in [the word list](words.txt), “staple” is actually word number *333,333* in [Peter Norvig’s list](http://norvig.com/ngrams/count_1w.txt).
+- [The security of this approach has been discussed elsewhere](https://security.stackexchange.com/q/6095/1220). User beware.
 
-    sed 's/[0-9]*//g'
+License
+---
 
-Usage
------
-
-This repo is useful as a corpus for typing training programs. According to analysis of the [Oxford English Corpus](http://oxforddictionaries.com/words/the-oec-facts-about-the-language), the 7,000 most common English lemmas account for approximately 90% of usage, so a 10,000 word training corpus is more than sufficient for practical training applications.
-
-To use this list as a training corpus in [Amphetype](http://code.google.com/p/amphetype/), paste the contents into the "Lesson Generator" tab with the following settings:
-
-    Make **3** copies of the list
-
-    Divide into sublists of size **3**
-
-    Add to sources as **google-10000-english**
-
-In the "Sources" tab, you should see **google-10000-english** available for training. Set WPM at 10 more than your current average, set accuracy to 98%, and you're set to train.
-
-Enjoy!
+The code is licensed under the [GNU Affero GPL v3+](LICENSE).
