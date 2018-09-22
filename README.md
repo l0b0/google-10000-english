@@ -3,6 +3,8 @@ XKCD passphrase generator
 
 Simply run **`./generate.sh`** to generate a passphrase based on the XKCD method: [![Password Strength comic by Randall Munroe](https://imgs.xkcd.com/comics/password_strength.png)](https://xkcd.com/936/)
 
+By default this uses the 2,048 most popular words in the English language. To use the *N* (between 4 and 2,048) most popular words instead simply run `./generate.sh N`.
+
 The word list is based on [another repository](https://github.com/first20hours/google-10000-english). [Many thanks](CREDITS.md) to Josh Kaufman, Peter Norvig and Google for contributing this.
 
 Notes:

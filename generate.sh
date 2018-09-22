@@ -2,4 +2,6 @@
 
 set -o errexit -o nounset
 
-printf '%s\n' "$(shuf words.txt | head --lines=4 | tr '\n' ' ')"
+words="${1-2048}"
+
+printf '%s\n' "$(head -n "$words" words.txt | shuf | head --lines=4 | tr '\n' ' ')"
